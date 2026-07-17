@@ -55,8 +55,21 @@ También puede filtrar los gastos:
 python main.py --dated-after "2025-01-01T00:00:00Z" --limit 10
 ```
 
+Para elegir un grupo desde un menú (por ejemplo, `Casita`), ejecute:
+
+```bat
+python main.py --select-group --limit 50
+```
+
+El programa listará los grupos y solicitará el número correspondiente. También
+puede indicar el ID directamente, sin menú:
+
+```bat
+python main.py --group-id 123456789 --limit 50
+```
+
 Los filtros opcionales disponibles son `--dated-after`, `--dated-before`,
-`--group-id` y `--limit`. Esta versión obtiene una única página de resultados;
+`--group-id`, `--select-group` y `--limit`. Esta versión obtiene una única página de resultados;
 la paginación completa se añadirá más adelante.
 
 ## Archivos generados
@@ -69,3 +82,10 @@ Después de una ejecución correcta se crean estos archivos locales en `data/raw
 
 Estos datos crudos también están ignorados por Git para proteger la información
 personal de la cuenta.
+
+## Análisis en un notebook
+
+Abra `notebooks/explore_group_expenses.ipynb` con Jupyter o VS Code después de
+ejecutar la extracción del grupo. El notebook carga `sample_expenses.json` y
+crea un DataFrame de Pandas llamado `expenses_df` para empezar el análisis.
+Los archivos raw contienen información personal y permanecen fuera de Git.
